@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Подключаем шрифт Roboto -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+		rel="stylesheet">
+	<!-- Подключаем стили -->
+	<link rel="stylesheet" href="./css/main.css">
+	<title>Document</title>
+</head>
+
+<body>
+	<form id="login-form">
+
+		<h1>Login</h1>
+
+		<input type="email" class="auth-input" id="email" placeholder="Email"
+			required>
+		<div id="email-error" class="err-element"></div>
+
+		<input type="password" class="auth-input" id="password"
+			placeholder="Password" required>
+		<div id="password-error" class="err-element"></div>
+
+		<label class="check">
+			<input type="checkbox" id="checkbox" required>
+			Я ознакомлен с условиями <a class="user-agreement"
+				href="#">пользовательского соглашения</a>
+		</label>
+		<div id="checkbox-error" class="err-element"></div>
+
+		<button type="submit" id="login-btn">Login</button>
+	</form>
+
+
+	<script type="module" src="./js/main.js"></script>
+	<script type="module" src="./js/auth.js"></script>
+
+</body>
+
+</html>
