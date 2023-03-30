@@ -1,85 +1,85 @@
 body {
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #fff;
+	font-family: 'Roboto', sans-serif;
+	font-size: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #fff;
 }
 
 form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  background: #00000000;
-  border-radius: 5px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background: #00000000;
+	border-radius: 5px;
 }
 
 h1 {
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 30px;
-  color: #1a202c;
-  text-transform: uppercase;
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-size: 30px;
+	color: #1a202c;
+	text-transform: uppercase;
 }
 
 form input {
-  padding: 0 40px;
-  margin: 10px 0;
-  background-color: #dedbdb;
-  border: none;
-  outline-color: #ff0000;
+	padding: 0 40px;
+	margin: 10px 0;
+	background-color: #dedbdb;
+	border: none;
+	outline-color: #ff0000;
 }
 
 .err-element {
-  color: #ff0000;
+	color: #ff0000;
 }
 
 .error {
-  border: solid 2px #ff0000;
-  outline-color: #ff0000;
+	border: solid 2px #ff0000;
+	outline-color: #ff0000;
 }
 
 .success {
-  border: solid 2px #008000;
-  outline-color: #008000;
+	border: solid 2px #008000;
+	outline-color: #008000;
 }
 
 .auth-input {
-  height: 60px;
-  width: 340px;
+	height: 60px;
+	width: 340px;
 }
 
 .check {
-  padding-left: 5px;
+	padding-left: 5px;
 }
 
 .user-agreement {
-  color: #2c5282;
-  text-decoration: none;
-  margin: 5px 0;
-  transition: 0.2s;
+	color: #2c5282;
+	text-decoration: none;
+	margin: 5px 0;
+	transition: 0.2s;
 }
 
 .user-agreement:hover {
-  color: #0073ff;
+	color: #0073ff;
 }
 
 button {
-  height: 60px;
-  width: 420px;
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  color: #fff;
-  background-color: #13a10e;
-  border: none;
+	height: 60px;
+	width: 420px;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: 700;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: #fff;
+	background-color: #13a10e;
+	border: none;
 }
 
 button:disabled {
-  background-color: #ff0000;
-  transition: 0.2s;
+	background-color: #ff0000;
+	transition: 0.2s;
 }
