@@ -15,8 +15,10 @@ function checkEmail() {
 
 	if (!email) {
 		showError(emailInput, 'Поле обязательно для заполнения!')
+		submitBtn.disabled = true
 	} else if (!isValidEmail(email)) {
 		showError(emailInput, 'Неверный email адрес')
+		submitBtn.disabled = true
 	} else {
 		showSuccess(emailInput)
 		clearError(emailInput)
@@ -31,6 +33,7 @@ function checkPassword() {
 
 	if (!password) {
 		showError(passwordInput, 'Поле обязательно для заполнения!')
+		submitBtn.disabled = true
 	} else {
 		clearError(passwordInput)
 		showSuccess(passwordInput)
@@ -45,6 +48,7 @@ function checkAgree() {
 	if (!agree.checked) {
 		agreeError.innerText =
 			'Вы должны ознакомиться с пользовательским соглашением!'
+		submitBtn.disabled = true
 	} else {
 		agreeError.innerText = ''
 	}
