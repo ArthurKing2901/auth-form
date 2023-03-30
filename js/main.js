@@ -94,7 +94,7 @@ function validSubmit() {
 	} else if (password !== PASSWORD) {
 		showError(passwordInput, 'Неверный пароль!')
 	} else {
-		window.location.href = '/shop.html'
+		window.location.href = 'https://arthurking2901.github.io/auth-form/shop'
 	}
 }
 
