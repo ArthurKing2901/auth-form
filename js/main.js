@@ -1,77 +1,105 @@
+//<<!!! ИМПОРТ !!!>>
 import { LOGIN, PASSWORD } from './auth.js'
 
-// Получаем ссылки на поля ввода и кнопку отправки формы
-const form = document.getElementById('login-form')
+//<<!! ССЫЛКИ !!>>
+const form = document.getElementById('auth-form')
 const emailInput = document.getElementById('email')
 const passwordInput = document.getElementById('password')
 const agree = document.getElementById('checkbox')
 const submitBtn = document.getElementById('login-btn')
 
-//Обработчик событий для поля "Email"
+// <<!!! ОБРАБОТЧИКИ СОБЫТИЙ !!!>>
+
+//Обработчики событий для поля "Email"
 emailInput.addEventListener('blur', checkEmail)
+emailInput.addEventListener('input', toggleSubmitButton)
+
+//Обработчик событий для поля "Password"
+passwordInput.addEventListener('blur', checkPassword)
+passwordInput.addEventListener('input', toggleSubmitButton)
+
+//Обработчик событий для чекбокса
+agree.addEventListener('change', checkAgree)
+agree.addEventListener('change', toggleSubmitButton)
+
+// Обработчик отправки формы
+form.addEventListener('submit', function (e) {
+	e.preventDefault()
+	validSubmit()
+})
+
+toggleSubmitButton()
+
+// <<!!! ФУНКЦИИ !!!>>
+
+function validSubmit() {
+	const email = emailInput.value.trim()
+	const password = passwordInput.value.trim()
+
+	if (email != LOGIN) {
+		showError(emailInput, 'Email не найден')
+	} else if (password !== PASSWORD) {
+		showError(passwordInput, 'Неверный пароль!')
+	} else {
+		window.location.href = '/shop.html'
+	}
+}
+
 //Функция проверки поля "Email"
 function checkEmail() {
 	const email = emailInput.value.trim()
 
 	if (!email) {
 		showError(emailInput, 'Поле обязательно для заполнения!')
-		submitBtn.disabled = true
 	} else if (!isValidEmail(email)) {
 		showError(emailInput, 'Неверный email адрес')
-		submitBtn.disabled = true
 	} else {
 		showSuccess(emailInput)
 		clearError(emailInput)
 	}
 }
 
-//Обработчик событий для поля "Password"
-passwordInput.addEventListener('blur', checkPassword)
+//Функция валидации email-адреса
+function isValidEmail(email) {
+	const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/
+	return emailRegex.test(email)
+}
+
 //Функция проверки поля "Password"
 function checkPassword() {
 	const password = passwordInput.value.trim()
 
 	if (!password) {
 		showError(passwordInput, 'Поле обязательно для заполнения!')
-		submitBtn.disabled = true
 	} else {
 		clearError(passwordInput)
 		showSuccess(passwordInput)
 	}
 }
 
-//Обработчик событий для чекбокса
-agree.addEventListener('change', checkAgree)
 //Функция проверки чекбокса
 function checkAgree() {
 	const agreeError = document.getElementById('checkbox-error')
 	if (!agree.checked) {
 		agreeError.innerText =
 			'Вы должны ознакомиться с пользовательским соглашением!'
-		submitBtn.disabled = true
 	} else {
 		agreeError.innerText = ''
 	}
 }
 
-// //Обработчик формы для блокировки кнопки
-// form.addEventListener("submit", (event) => {
-//   event.preventDefault();
+// Функция проверки заполнения формы
+function isFormValid() {
+	const email = emailInput.value.trim()
+	const password = passwordInput.value.trim()
+	const agreeChecked = agree.checked
 
-//   const emailError = checkEmail();
-//   const passwordError = checkPassword();
-//   const checkboxError = checkAgree();
+	return email && isValidEmail(email) && password && agreeChecked
+}
 
-//   if (emailError || passwordError || checkboxError) {
-//     submitBtn.disabled = true;
-//     return;
-//   }
-// });
-
-//Функция валидации email-адреса
-function isValidEmail(email) {
-	const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/
-	return emailRegex.test(email)
+// Функция блокировки кнопки "Login"
+function toggleSubmitButton() {
+	submitBtn.disabled = !isFormValid()
 }
 
 //Функция отображения ошибок
@@ -82,14 +110,14 @@ function showError(input, message) {
 	input.classList.remove('success')
 }
 
-//Функция успешной валидации полей
-function showSuccess(input) {
-	input.classList.add('success')
-	input.classList.remove('error')
-}
-
 //Функция очистки ошибок
 function clearError(input) {
 	input.classList.remove('error')
 	input.nextElementSibling.innerText = ''
+}
+
+//Функция успешной валидации полей
+function showSuccess(input) {
+	input.classList.add('success')
+	input.classList.remove('error')
 }
