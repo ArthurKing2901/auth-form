@@ -8,6 +8,8 @@ const passwordInput = document.getElementById('password')
 const agree = document.getElementById('checkbox')
 const submitBtn = document.getElementById('login-btn')
 
+toggleSubmitButton()
+
 // <<!!! ОБРАБОТЧИКИ СОБЫТИЙ !!!>>
 
 //Обработчики событий для поля "Email"
@@ -28,22 +30,7 @@ form.addEventListener('submit', function (e) {
 	validSubmit()
 })
 
-toggleSubmitButton()
-
 // <<!!! ФУНКЦИИ !!!>>
-
-function validSubmit() {
-	const email = emailInput.value.trim()
-	const password = passwordInput.value.trim()
-
-	if (email != LOGIN) {
-		showError(emailInput, 'Email не найден')
-	} else if (password !== PASSWORD) {
-		showError(passwordInput, 'Неверный пароль!')
-	} else {
-		window.location.href = '/shop.html'
-	}
-}
 
 //Функция проверки поля "Email"
 function checkEmail() {
@@ -95,6 +82,20 @@ function isFormValid() {
 	const agreeChecked = agree.checked
 
 	return email && isValidEmail(email) && password && agreeChecked
+}
+
+// Функции перехода на страницу "SHOP"
+function validSubmit() {
+	const email = emailInput.value.trim()
+	const password = passwordInput.value.trim()
+
+	if (email != LOGIN) {
+		showError(emailInput, 'Email не найден')
+	} else if (password !== PASSWORD) {
+		showError(passwordInput, 'Неверный пароль!')
+	} else {
+		window.location.href = '/shop.html'
+	}
 }
 
 // Функция блокировки кнопки "Login"
